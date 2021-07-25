@@ -1,43 +1,29 @@
 
 let noiseVals = [];
+let rigidVals = [];
 
-var zoom;
-var res;
-var octaves;
-var falloff;
-var sealevel = 40;
-var snowlevel = 100;
-var xOffset = 0;
-var yOffset = 0;
+let rigidxoff;
+let rigidyoff;
+let noisexoff;
+let noiseyoff;
 
 function setup() {
   createCanvas(500, 500);
   pixelDensity(1);
   makeInterface();
   createPalette(sealevel, colorQuality);
+  initVals();
+  
+  rigidxoff = random(1000.00);
+  rigidyoff = random(1000.00);
+  noisexoff = random(1000.00);
+  noiseyoff = random(1000.00);
+  print(noisexoff,noiseyoff,rigidxoff,rigidyoff);
 }
 
-function draw() {
-  res = resSlider.value();
-  zoom = zoomSlider.value() / 10000.0;
-
-  octaves = octavesSlider.value();
-  falloff = falloffSlider.value()/100.0;
-  
-  sealevel = sealevelSlider.value();
-  snowlevel = snowlevelSlider.value();
-  
-  
-  
-  genNoise();
-  render();
-
-  
-  //update pos offsets
-  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
-    xOffset += (mouseX - width / 2) / 1000.0;
-    yOffset += (mouseY - height / 2) / 1000.0;
+function initVals(){
+  for(let i = 0; i<width*height; i++){
+    noiseVals[i] = 0;
+    rigidVals[i] = 0;
   }
 }
-
-

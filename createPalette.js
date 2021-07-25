@@ -17,17 +17,17 @@ function createPalette() {
   
   //[desiredColor, map(desiredHeight, 0, 1, sealevel, snowlevel)]
   col = [
-    [color(20, 100, 170), map(-0.3, 0, 1, sealevel, snowlevel)], //sea
-    [color(0, 205, 223), map(0.0, 0, 1, sealevel, snowlevel)], //lake
-    [color(241, 255, 144), map(0.2, 0, 1, sealevel, snowlevel)], //beach
-    [color(76, 214, 54), map(0.3, 0, 1, sealevel, snowlevel)], //grass
-    [color(34, 169, 66), map(0.4, 0, 1, sealevel, snowlevel)], //grass2
-    [color(18, 82, 29), map(0.5, 0, 1, sealevel, snowlevel)], //forest
-    [color(20, 82, 42), map(0.6, 0, 1, sealevel, snowlevel)], //forest2
-    [color(79, 73, 31), map(0.7, 0, 1, sealevel, snowlevel)], //dirt
-    [color(117, 147, 146), map(0.8, 0, 1, sealevel, snowlevel)], //rock
-    [color(250, 255, 250), map(0.9, 0, 1, sealevel, snowlevel)], //snow
-    [color(255, 255, 255), map(1, 0, 1, sealevel, snowlevel)] //snow
+    [color(20, 100, 170), map(-0.3, 0, 1, sealevel, sealevel+snowlevel)], //sea
+    [color(0, 205, 223), map(0.0, 0, 1, sealevel, sealevel+snowlevel)], //lake
+    [color(241, 255, 144), map(0.2, 0, 1, sealevel, sealevel+snowlevel)], //beach
+    [color(76, 214, 54), map(0.3, 0, 1, sealevel, sealevel+snowlevel)], //grass
+    [color(34, 169, 66), map(0.4, 0, 1, sealevel, sealevel+snowlevel)], //grass2
+    [color(18, 82, 29), map(0.5, 0, 1, sealevel, sealevel+snowlevel)], //forest
+    [color(20, 82, 42), map(0.6, 0, 1, sealevel, sealevel+snowlevel)], //forest2
+    [color(79, 73, 31), map(0.7, 0, 1, sealevel, sealevel+snowlevel)], //dirt
+    [color(117, 147, 146), map(0.8, 0, 1, sealevel, sealevel+snowlevel)], //rock
+    [color(250, 255, 250), map(0.9, 0, 1, sealevel, sealevel+snowlevel)], //snow
+    [color(255, 255, 255), map(1, 0, 1, sealevel, sealevel+snowlevel)] //snow
   ];
   colLength = col.length;
   

@@ -1,16 +1,10 @@
 function genNoise() {
-  noiseVals = [];
-  //make noise map
-  let minVal = 0.5;
-  let maxVal = 0.5;
-  noiseDetail(octaves, falloff);
+
+  noiseDetail(noiseoctaves, noisefalloff);
   for (let y = 0; y < height; y += res) {
     for (let x = 0; x < width; x += res) {
       //gen noise
-      let heightValue = getNoise(x,y);
-      //pick highest and lowest values for normalizing
-      minVal = min(heightValue, minVal);
-      maxVal = max(heightValue, maxVal);
+      let heightValue = getNoise(x,y,noisexoff,noiseyoff);
       //save noise
       noiseVals[x+y*width] = heightValue;
     }
@@ -22,15 +16,16 @@ function genNoise() {
       noiseVals[x+y*width] = min(1,max(0,noiseVals[x+y*width]));                     
     }
   }
+  print("noiseVals done");
 }
 
 
-
-function getNoise(x, y) {
-  translate(width / 2, height / 2);
-  let sampleX = zoom * (x + xOffset - width / 2) + width / 2 + xOffset;
-  let sampleY = zoom * (y + yOffset - height / 2) + height / 2 + yOffset;
-  translate(-width / 2, -height / 2);
+//also used in genRigid
+function getNoise(x, y,xoff,yoff) {
+  //translate(width / 2, height / 2);
+  let sampleX = zoom * (x + xoff - width / 2) + width / 2 + xoff;
+  let sampleY = zoom * (y + yoff - height / 2) + height / 2 + yoff;
+  //translate(-width / 2, -height / 2);
   
   return noise(sampleX, sampleY);
 }
