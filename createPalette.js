@@ -1,12 +1,12 @@
-var palette = [];
-var colorQuality = 3000;
-var col = [];
-var perlinValue = 0.0;
-var low = 0;
-var high = 0;
-var lerpVal = 0;
-var colLength = 0;
-var perlinValueINT;
+let palette = [];
+let colorQuality = 3000; //lenght of the color array
+let col = [];
+let perlinValue = 0.0;
+let low = 0;
+let high = 0;
+let lerpVal = 0;
+let colLength = 0;
+let perlinValueINT;
 
 
 
@@ -15,9 +15,10 @@ function createPalette() {
   //one time computing color palette
   palette = [];
   
+  //[desiredColor, map(desiredHeight, 0, 1, sealevel, snowlevel)]
   col = [
-    [color(0, 74, 144), map(0.0, 0, 1, sealevel, snowlevel)], //sea
-    [color(0, 205, 223), map(0.1, 0, 1, sealevel, snowlevel)], //lake
+    [color(20, 100, 170), map(-0.3, 0, 1, sealevel, snowlevel)], //sea
+    [color(0, 205, 223), map(0.0, 0, 1, sealevel, snowlevel)], //lake
     [color(241, 255, 144), map(0.2, 0, 1, sealevel, snowlevel)], //beach
     [color(76, 214, 54), map(0.3, 0, 1, sealevel, snowlevel)], //grass
     [color(34, 169, 66), map(0.4, 0, 1, sealevel, snowlevel)], //grass2
@@ -26,12 +27,16 @@ function createPalette() {
     [color(79, 73, 31), map(0.7, 0, 1, sealevel, snowlevel)], //dirt
     [color(117, 147, 146), map(0.8, 0, 1, sealevel, snowlevel)], //rock
     [color(250, 255, 250), map(0.9, 0, 1, sealevel, snowlevel)], //snow
+    [color(255, 255, 255), map(1, 0, 1, sealevel, snowlevel)] //snow
   ];
   colLength = col.length;
   
-  for (var i = 0; i < colorQuality + 1; i++) {  
+  low = col[0][0];
+  high = col[0][0];
+  for (let i = 0; i < colorQuality + 1; i++) {  
   perlinValueINT = perlinValue*100;
-    for (var j = 1; j < colLength; j++) {
+  
+    for (let j = 1; j < colLength; j++) {
       
       if (col[j][1] > perlinValueINT) {
         low = col[j - 1][0];

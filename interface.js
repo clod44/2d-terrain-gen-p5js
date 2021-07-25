@@ -4,23 +4,24 @@
 
 
 
-var zoomSlider;
-var resSlider;
-var octavesSlider;
-var layerASlider;
-var layerFSlider;
-var sealevelSlider;
-var snowlevelSlider;
+let zoomSlider;
+let resSlider;
+
+let octavesSlider;
+let falloffSlider;
+
+let sealevelSlider;
+let snowlevelSlider;
 
 
 
 function makeInterface() {
   //Sliders and texts
-  var x = 10;
-  var y = height + 10;
-  var xoff = 0;
-  var yoff = 10;
-  var margin = 25;
+  let x = 10;
+  let y = height + 10;
+  let xoff = 0;
+  let yoff = 10;
+  let margin = 25;
 
   resSlider = createSlider(1, 20, 10); //resolution
   resSlider.position(x + xoff, y + yoff);
@@ -40,6 +41,12 @@ function makeInterface() {
   //xoff += margin;
   yoff += margin;
 
+  msg = createP("Perlin Settings:");//Perlin Settings
+  msg.style("color", "#9b9b9b");
+  msg.position(x, y + yoff - 13);
+  //xoff += margin;
+  yoff += margin;
+  
   octavesSlider = createSlider(1, 5, 1); //octaves
   octavesSlider.position(x + xoff, y + yoff);
   octavesSlider.style("width", "260px");
@@ -49,24 +56,15 @@ function makeInterface() {
   //xoff += margin;
   yoff += margin;
 
-  layerASlider = createSlider(1, 100, 50); //layerA
-  layerASlider.position(x + xoff, y + yoff);
-  layerASlider.style("width", "260px");
-  msg = createP("LayerA (alpha multiplier)");
+  falloffSlider = createSlider(1, 100, 50); //falloff
+  falloffSlider.position(x + xoff, y + yoff);
+  falloffSlider.style("width", "260px");
+  msg = createP("falloff");
   msg.style("color", "#9b9b9b");
   msg.position(260 + 20, y + yoff - 13);
   //xoff += margin;
   yoff += margin;
-
-  layerFSlider = createSlider(100, 500, 200); //layerF
-  layerFSlider.position(x + xoff, y + yoff);
-  layerFSlider.style("width", "260px");
-  msg = createP("LayerF (frequency multiplier)");
-  msg.style("color", "#9b9b9b");
-  msg.position(260 + 20, y + yoff - 13);
-  //xoff += margin;
-  yoff += margin;
-
+  
   msg = createP("Palette settings:");//palette settings
   msg.style("color", "#9b9b9b");
   msg.position(x, y + yoff - 13);
@@ -90,7 +88,6 @@ function makeInterface() {
   msg.position(260 + 20, y + yoff - 13);
   //xoff += margin;
   yoff += margin;
-  
   
   applyPaletteButton = createButton("apply palette changes");//apply palette settings
   applyPaletteButton.position(x, y + yoff);
